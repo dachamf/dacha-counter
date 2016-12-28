@@ -26,7 +26,18 @@
 
 
 <div class="main-content">
-    <form action="">
+    <div class="row">
+        <div class="large-6 columns">
+            <?php if (isset($_SESSION['message'])): ?>
+                <div data-alert  class="alert-box <?php echo $_SESSION['message_class']; ?> radius" id="alertBox"><?php echo $_SESSION['message'] ?>
+                    <a href="#" class="close">&times;</a>
+                </div>
+                <?php unset($_SESSION['message']); ?>
+                <?php unset($_SESSION['message_class']); ?>
+            <?php endif; ?>
+        </div>
+    </div>
+    <form action="create">
         <div class="row">
             <div class="large-3 columns">
                 <label for="name">Name</label>
@@ -58,7 +69,6 @@
         </div>
     </form>
 </div>
-
 
 
 <!-- Footer -->

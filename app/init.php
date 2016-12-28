@@ -9,7 +9,9 @@
 // Constants
 //define('TEMPLATES_PATH', $_SERVER['DOCUMENT_ROOT'] . '/Pages');
 //define('PARTIALS_PATH', $_SERVER['DOCUMENT_ROOT'] . '/Pages/partials');
-session_start();
+if(!session_id()) {
+    session_start();
+}
 
 $GLOBALS['config'] = array(
     'mysql' => array(
@@ -20,11 +22,14 @@ $GLOBALS['config'] = array(
     ),
 );
 
+require_once '../vendor/autoload.php';
+require_once 'database.php';
 require_once 'core/App.php';
 require_once 'core/Controller.php';
-spl_autoload_register(function ($class){
-    require_once '../Classes/' . $class . '.php';
-});
+require_once '../Classes/Flash.php';
+//spl_autoload_register(function ($class){
+//    require_once '../Classes/' . $class . '.php';
+//});
 
 //require_once 'functions/sanitize.php';
 
