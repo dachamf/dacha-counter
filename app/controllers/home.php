@@ -23,9 +23,18 @@ class Home extends Controller
         $this->view('home/index');
     }
 
-    public function report()
+    public function report($from = null, $to = null)
     {
-        $this->view('home/report');
+       $all =  SaveSel::find(1);
+       $name = $all->name;
+        if($from == null && $to == null){
+            $this->view('home/report');
+        } elseif ($from != null && $to == null){
+
+        } else {
+
+        }
+
     }
 
 
