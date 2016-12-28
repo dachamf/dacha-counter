@@ -52,7 +52,7 @@
             <div class="large-3 columns">
                 <label for="order">Order ID</label>
                 <span class="prefix"><i class="fi-shopping-cart"></i></span>
-                <input type="number" name="order" id="order">
+                <input type="text" name="order" id="order">
             </div>
             <div class="large-3 columns">
                 <label for="save">Save the sale</label>
