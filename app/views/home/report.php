@@ -23,9 +23,9 @@
 <!-- End Header -->
 <!--Main Content-->
 
-
-<h1>Report</h1>
-
+<div class="main-content">
+    <h1>Report</h1>
+</div>
 
 
 <!-- Footer -->
