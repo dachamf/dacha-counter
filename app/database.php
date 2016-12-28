@@ -8,7 +8,7 @@ $capsule->addConnection([
     'driver' => 'mysql',
     'host' => '127.0.0.1',
     'username' => 'root',
-    'password' => 'Welcome1',
+    'password' => '',
     'database' => 'dacha',
     'charset' => 'utf8',
     'collation' => 'utf8_unicode_ci',

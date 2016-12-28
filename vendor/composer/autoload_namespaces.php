@@ -7,9 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
-    'Illuminate\\Support' => array($vendorDir . '/illuminate/support'),
-    'Illuminate\\Events' => array($vendorDir . '/illuminate/events'),
-    'Illuminate\\Database' => array($vendorDir . '/illuminate/database'),
-    'Illuminate\\Container' => array($vendorDir . '/illuminate/container'),
     'ExcelAnt' => array($vendorDir . '/wisembly/excelant/lib', $vendorDir . '/wisembly/excelant/test'),
+    'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib'),
 );

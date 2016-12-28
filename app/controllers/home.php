@@ -25,14 +25,17 @@ class Home extends Controller
 
     public function report($from = null, $to = null)
     {
-       $all =  SaveSel::find(1);
-       $name = $all->name;
-        if($from == null && $to == null){
+        $from = (isset($_GET['from']))? $_GET['from'] : null;
+        $to = (isset($_GET['to'])) ? $_GET['to'] : null;
+
+        if ($from == null && $to == null) {
+            $sales = SaveSel::query('save_sels')->get();
+            $this->view('home/report', ['sales' => $sales]);
+
+        } elseif ($from != null && $to == null) {
             $this->view('home/report');
-        } elseif ($from != null && $to == null){
-
         } else {
-
+            $this->view('home/report');
         }
 
     }
@@ -41,7 +44,8 @@ class Home extends Controller
     public function create($name = '', $email = '', $orderId = '', $saveSale = '', $reason = '')
     {
         if (isset($_GET['name']) && isset($_GET['email']) && isset($_GET['order']) && isset($_GET['save']) && isset($_GET['reason']) &&
-        !empty($_GET['name']) && !empty($_GET['email']) && !empty($_GET['order']) && !empty($_GET['save']) && !empty($_GET['reason'])) {
+            !empty($_GET['name']) && !empty($_GET['email']) && !empty($_GET['order']) && !empty($_GET['save']) && !empty($_GET['reason'])
+        ) {
             $name = $_GET['name'];
             $email = $_GET['email'];
             $orderId = $_GET['order'];

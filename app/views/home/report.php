@@ -24,10 +24,9 @@
 </header>
 <!-- End Header -->
 <!--Main Content-->
-
 <div class="main-content">
 
-    <form action="">
+    <form action="report">
         <div class="row">
             <div class="large-6 columns">
                 <label for="from">FROM</label>
@@ -37,8 +36,44 @@
                 <label for="to">TO</label>
                 <input type="date" name="to" id="to" placeholder="Choose 'TO' date">
             </div>
+            <div class="large6 columns">
+                <input type="submit" class="button" value="Get Report">
+            </div>
         </div>
     </form>
+
+
+    <div class="row">
+        <div class="large12 columns">
+            <?php if (isset($data['sales'])): ?>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>E-mail</th>
+                        <th>Order Id</th>
+                        <th>Save Sale</th>
+                        <th>Reason</th>
+                        <th>Created at</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($data['sales'] as $sale): ?>
+                        <tr>
+                            <td><?php echo $sale->name; ?></td>
+                            <td><?php echo $sale->email; ?></td>
+                            <td><?php echo $sale->orderId; ?></td>
+                            <td><?php echo $sale->saveSale; ?></td>
+                            <td><?php echo $sale->reason; ?></td>
+                            <td><?php echo $sale->created_at; ?></td>
+
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
+        </div>
+    </div>
 </div>
 
 

@@ -1,10 +1,9 @@
 
 $(document).foundation();
-$(document).foundationAlerts();
 // $('#alertBox').foundation({alert: {speed: 3000}});
 $(function() {
-    $( "#from" ).datepicker();
+    $("#from").datepicker();
 });
 $(function() {
-    $( "#to" ).datepicker();
+    $("#to").datepicker("option", "dateFormat", "yy-mm-dd");
 });
