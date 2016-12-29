@@ -29,7 +29,7 @@ class Home extends Controller
         $to = (isset($_GET['to'])) ? $_GET['to'] : null;
 
         if ($from == null && $to == null) {
-            $sales = SaveSel::query('save_sels')->get();
+            $sales = $this->saveSale->query('save_sels')->get();
             $this->view('home/report', ['sales' => $sales]);
 
         } elseif ($from != null && $to == null) {
