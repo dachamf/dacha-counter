@@ -17,8 +17,8 @@
         <a href="/" class="brand-logo">Dachas Save the Sale app <br>
             <small>by Dacha2</small></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/home/index" class="is-active"><i class="material-icons">home</i>Home</a></li>
-            <li><a href="/home/report"><i class="material-icons">format_list_numbered</i> Reports</a></li>
+            <li><a href="/home/index" class="is-active"><i class="material-icons">home</i></a></li>
+            <li><a href="/home/report"><i class="material-icons">format_list_numbered</i></a></li>
         </ul>
     </div>
 </nav>
