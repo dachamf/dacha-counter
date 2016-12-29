@@ -50,3 +50,26 @@ nav{
 .container.content{
     padding-top: 5%;
 }
+
+.padding{
+    margin-top: 3%;
+}
+
+.picker__date-display{
+    background-color: #1a237e;
+}
+.picker__close, .picker__today{
+    color: #1a237e;
+}
+button.picker__today:focus, button.picker__clear:focus, button.picker__close:focus {
+    color: #536dfe;
+}
+.picker__close, .picker__today {
+    color: #536dfe;
+}
+.picker__weekday-display {
+    background-color: #536dfe;
+}
+.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+    background-color: #536dfe;
+}
