@@ -91,18 +91,16 @@
             <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Links</h5>
                 <ul>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                    <li><a class="grey-text text-lighten-3" href="/home/index">Home</a></li>
+                    <li><a class="grey-text text-lighten-3" href="/home/report">Reports</a></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="footer-copyright">
         <div class="container">
-            © 2016 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            © 2016 All rights reserved
+            <a class="grey-text text-lighten-4 right" href="https://www.facebook.com/dalibor.djordjevic">Contact me <i class="material-icons">tag_faces</i></a>
         </div>
     </div>
 </footer>
