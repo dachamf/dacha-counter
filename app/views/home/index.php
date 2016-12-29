@@ -26,7 +26,7 @@
 <!--Main Content-->
 
 
-<div class="container">
+<div class="container content">
     <div class="row">
         <div class="col s12">
             <?php if (isset($_SESSION['message'])): ?>

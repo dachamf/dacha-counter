@@ -46,3 +46,7 @@ footer.page-footer {
 nav{
     background-color: #1a237e;
 }
+
+.container.content{
+    padding-top: 5%;
+}
