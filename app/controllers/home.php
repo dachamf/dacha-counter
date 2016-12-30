@@ -6,6 +6,10 @@
  * Date: 12/27/16
  * Time: 21:12
  */
+use ExcelAnt\Adapter\PhpExcel\Workbook\Workbook;
+use ExcelAnt\Adapter\PhpExcel\Writer\WriterFactory;
+use ExcelAnt\Adapter\PhpExcel\Writer\PhpExcelWriter\Excel5;
+
 class Home extends Controller
 {
 
@@ -68,6 +72,33 @@ class Home extends Controller
             $this->view('home/index');
         }
 
+    }
+
+    public function exporttoecell($saveSale){
+
+        $saveSale = $_POST;
+        $workbook = new Workbook();
+        $scheet = new \ExcelAnt\Adapter\PhpExcel\Sheet\Sheet($workbook);
+        $table = new \ExcelAnt\Table\Table();
+
+        foreach ($saveSale as $item) {
+            $item = json_decode($item);
+
+            $table->setRow([
+                $item->name,
+                $item->email,
+                $item->orderId,
+                $item->saveSale,
+                $item->reason,
+            ]);
+        }
+        $scheet->addTable($table, new \ExcelAnt\Coordinate\Coordinate(1,1));
+        $workbook->addSheet($scheet);
+        $writer = (new WriterFactory())->createWriter(new Excel5('../ExcellFiles/' . date('Y_m_d-h-i-s') . '_export.xls'));
+        $phpExcel = $writer->convert($workbook);
+        $writer->write($phpExcel);
+        $this->flash->flash('message', 'File is exported on ', 'success');
+        Redirect::to('/home/report');
     }
 
 }

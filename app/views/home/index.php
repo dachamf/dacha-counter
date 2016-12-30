@@ -41,7 +41,7 @@
             <?php endif; ?>
         </div>
     </div>
-    <form action="create">
+    <form action="create" >
         <div class="row">
             <div class="col s6 input-field">
                 <i class="material-icons prefix">account_circle</i>

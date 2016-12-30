@@ -27,6 +27,7 @@ require_once 'database.php';
 require_once 'core/App.php';
 require_once 'core/Controller.php';
 require_once '../Classes/Flash.php';
+require_once '../Classes/Redirect.php';
 //spl_autoload_register(function ($class){
 //    require_once '../Classes/' . $class . '.php';
 //});

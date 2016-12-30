@@ -45,10 +45,10 @@
         </div>
     </form>
 
-
-    <div class="row">
-        <div class="large12 columns">
-            <?php if (isset($data['sales'])): ?>
+    <form action="exporttoecell" method="post">
+        <div class="row">
+            <div class="large12 columns">
+                <?php if (isset($data['sales'])): ?>
                 <table class="striped z-depth-1">
                     <thead>
                     <tr>
@@ -63,23 +63,30 @@
                     <tbody>
                     <?php foreach ($data['sales'] as $sale): ?>
                         <tr>
-                            <td><?php echo $sale->name; ?></td>
+                            <td><?php echo $sale->name; ?>
+                                <input type="hidden" value='<?php echo $sale; ?>' name="<?php echo $sale->id; ?>"></td>
                             <td><?php echo $sale->email; ?></td>
                             <td><?php echo $sale->orderId; ?></td>
                             <td><?php echo $sale->saveSale; ?></td>
                             <td><?php echo $sale->reason; ?></td>
                             <td><?php echo $sale->created_at; ?></td>
-
                         </tr>
                     <?php endforeach; ?>
                     </tbody>
                 </table>
-            <?php endif; ?>
+            </div>
+            <div class="col s6 padding">
+                <input type="submit" class="waves-effect waves-light btn z-depth-5" value="Get excel file">
+            </div>
         </div>
-        <div class="col s6 padding">
-            <input type="submit" class="waves-effect waves-light btn z-depth-5" value="Get excel file">
-        </div>
-    </div>
+        <?php endif; ?>
+        <!--        --><?php //foreach ($data['sales'] as $sale): ?>
+        <!--            <input type="hidden" value="--><?php //echo $sale->id; ?><!--" name="-->
+        <?php //echo $sale->id; ?><!--">-->
+        <!--            --><?php //?>
+        <!--        --><?php //endforeach; ?>
+
+    </form>
 </div>
 
 
