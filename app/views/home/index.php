@@ -100,7 +100,7 @@
     <div class="footer-copyright">
         <div class="container">
             © 2016 All rights reserved
-            <a class="grey-text text-lighten-4 right" href="https://www.facebook.com/dalibor.djordjevic">Contact me <i class="material-icons">tag_faces</i></a>
+            <a class="grey-text text-lighten-4 right" href="https://www.facebook.com/dalibor.djordjevic" target="_blank">Contact me <i class="material-icons">tag_faces</i></a>
         </div>
     </div>
 </footer>

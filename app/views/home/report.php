@@ -29,64 +29,65 @@
     <!--            <div class="col s6">-->
     <!--                <input type="date" class="datepicker">-->
     <!--            </div>-->
-    <form action="report">
+    <form action="report" method="get">
         <div class="row">
             <div class="col s6">
                 <label for="from">FROM</label>
-                <input type="date" class="datepicker" id="from">
+                <input type="date" class="datepicker" id="from" name="from">
             </div>
             <div class="col s6">
                 <label for="to">TO</label>
-                <input type="date" class="datepicker" id="to">
+                <input type="date" class="datepicker" id="to" name="to">
             </div>
             <div class="col s6">
                 <input type="submit" class="waves-effect waves-light btn z-depth-5" value="Get Report">
             </div>
         </div>
     </form>
-
-    <form action="exporttoecell" method="post">
-        <div class="row">
-            <div class="large12 columns">
-                <?php if (isset($data['sales'])): ?>
-                <table class="striped z-depth-1">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>E-mail</th>
-                        <th>Order Id</th>
-                        <th>Save Sale</th>
-                        <th>Reason</th>
-                        <th>Created at</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($data['sales'] as $sale): ?>
+    <?php if (isset($data['sales'])): ?>
+        <form action="exporttoecell" method="get">
+            <div class="row">
+                <div class="large12 columns">
+                    <table class="striped z-depth-1">
+                        <thead>
                         <tr>
-                            <td><?php echo $sale->name; ?>
-                                <input type="hidden" value='<?php echo $sale; ?>' name="<?php echo $sale->id; ?>"></td>
-                            <td><?php echo $sale->email; ?></td>
-                            <td><?php echo $sale->orderId; ?></td>
-                            <td><?php echo $sale->saveSale; ?></td>
-                            <td><?php echo $sale->reason; ?></td>
-                            <td><?php echo $sale->created_at; ?></td>
+                            <th>Name</th>
+                            <th>E-mail</th>
+                            <th>Order Id</th>
+                            <th>Save Sale</th>
+                            <th>Reason</th>
+                            <th>Created at</th>
                         </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($data['sales'] as $sale): ?>
+                            <tr>
+                                <td><?php echo $sale->name; ?>
+                                    <input type="hidden" value='<?php echo $sale; ?>' name="<?php echo $sale->id; ?>">
+                                </td>
+                                <td><?php echo $sale->email; ?></td>
+                                <td><?php echo $sale->orderId; ?></td>
+                                <td><?php echo $sale->saveSale; ?></td>
+                                <td><?php echo $sale->reason; ?></td>
+                                <td><?php echo $sale->created_at; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col s6 padding">
+                    <input type="submit" class="waves-effect waves-light btn z-depth-5" value="Get excel file">
+                </div>
             </div>
-            <div class="col s6 padding">
-                <input type="submit" class="waves-effect waves-light btn z-depth-5" value="Get excel file">
-            </div>
-        </div>
-        <?php endif; ?>
-        <!--        --><?php //foreach ($data['sales'] as $sale): ?>
-        <!--            <input type="hidden" value="--><?php //echo $sale->id; ?><!--" name="-->
-        <?php //echo $sale->id; ?><!--">-->
-        <!--            --><?php //?>
-        <!--        --><?php //endforeach; ?>
 
-    </form>
+            <!--        --><?php //foreach ($data['sales'] as $sale): ?>
+            <!--            <input type="hidden" value="--><?php //echo $sale->id; ?><!--" name="-->
+            <?php //echo $sale->id; ?><!--">-->
+            <!--            --><?php //?>
+            <!--        --><?php //endforeach; ?>
+
+        </form>
+    <?php endif; ?>
 </div>
 
 
@@ -112,7 +113,7 @@
     <div class="footer-copyright">
         <div class="container">
             © 2016 All rights reserved
-            <a class="grey-text text-lighten-4 right" href="https://www.facebook.com/dalibor.djordjevic">Contact me <i
+            <a class="grey-text text-lighten-4 right" href="https://www.facebook.com/dalibor.djordjevic" target="_blank">Contact me <i
                         class="material-icons">tag_faces</i></a>
         </div>
     </div>

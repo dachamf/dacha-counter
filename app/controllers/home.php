@@ -34,12 +34,14 @@ class Home extends Controller
 
         if ($from == null && $to == null) {
             $sales = $this->saveSale->query('save_sels')->get();
-            $this->view('home/report', ['sales' => $sales]);
+            $this->view('home/report');
 
         } elseif ($from != null && $to == null) {
-            $this->view('home/report');
+            $sales = $this->saveSale->query('save_sels')->where('created_at', '>', $from)->get();
+            $this->view('home/report', ['sales' => $sales]);
         } else {
-            $this->view('home/report');
+            $sales = $this->saveSale->query('save_sels')->where('created_at', '>', $from)->where('created_at', '<', $to)->get();
+            $this->view('home/report', ['sales' => $sales]);
         }
 
     }
@@ -64,11 +66,11 @@ class Home extends Controller
                 'reason' => $reason
             ]);
 
-            $this->flash->flash('message', 'Data is saved!', 'success');
+//            $this->flash->flash('message', 'Data is saved!', 'success');
             $this->view('home/index');
         } else {
 
-            $this->flash->flash('message', 'There is no data to save!', 'alert');
+//            $this->flash->flash('message', 'There is no data to save!', 'alert');
             $this->view('home/index');
         }
 
@@ -97,7 +99,7 @@ class Home extends Controller
         $writer = (new WriterFactory())->createWriter(new Excel5('../ExcellFiles/' . date('Y_m_d-h-i-s') . '_export.xls'));
         $phpExcel = $writer->convert($workbook);
         $writer->write($phpExcel);
-        $this->flash->flash('message', 'File is exported on ', 'success');
+        //$this->flash->flash('message', 'File is exported on ', 'success');
         Redirect::to('/home/report');
     }
 
