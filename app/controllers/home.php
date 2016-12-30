@@ -29,19 +29,32 @@ class Home extends Controller
 
     public function report($from = null, $to = null)
     {
-        $from = (isset($_GET['from']))? $_GET['from'] : null;
+        $from = ($from == 'home')? "" : $from;
+        $from = (isset($_GET['from'])) ? $_GET['from'] : null;
         $to = (isset($_GET['to'])) ? $_GET['to'] : null;
 
-        if ($from == null && $to == null) {
+        if ($from === "" && $to === "") {
             $sales = $this->saveSale->query('save_sels')->get();
-            $this->view('home/report');
+            $this->view('home/report', ['sales' => $sales]);
 
         } elseif ($from != null && $to == null) {
             $sales = $this->saveSale->query('save_sels')->where('created_at', '>', $from)->get();
-            $this->view('home/report', ['sales' => $sales]);
+            if(!$sales->count() > 0) {
+                $this->view('home/report', ['sales' => $sales]);
+            } else {
+                $this->view('home/report');
+            }
+        } elseif ($from === null && $to === null) {
+            $this->view('home/report');
         } else {
             $sales = $this->saveSale->query('save_sels')->where('created_at', '>', $from)->where('created_at', '<', $to)->get();
-            $this->view('home/report', ['sales' => $sales]);
+
+            if($sales->count() > 0) {
+                $this->view('home/report', ['sales' => $sales]);
+            } else {
+                $this->view('home/report');
+            }
+
         }
 
     }
@@ -76,7 +89,8 @@ class Home extends Controller
 
     }
 
-    public function exporttoecell($saveSale){
+    public function exporttoecell($saveSale)
+    {
 
         $saveSale = $_POST;
         $workbook = new Workbook();
@@ -94,7 +108,7 @@ class Home extends Controller
                 $item->reason,
             ]);
         }
-        $scheet->addTable($table, new \ExcelAnt\Coordinate\Coordinate(1,1));
+        $scheet->addTable($table, new \ExcelAnt\Coordinate\Coordinate(1, 1));
         $workbook->addSheet($scheet);
         $writer = (new WriterFactory())->createWriter(new Excel5('../ExcellFiles/' . date('Y_m_d-h-i-s') . '_export.xls'));
         $phpExcel = $writer->convert($workbook);
