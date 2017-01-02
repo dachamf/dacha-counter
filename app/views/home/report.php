@@ -45,7 +45,7 @@
         </div>
     </form>
     <?php if (isset($data['sales'])): ?>
-        <form action="exporttoecell" method="get">
+        <form action="exporttoecell" method="post">
             <div class="row">
                 <div class="large12 columns">
                     <table class="striped z-depth-1">

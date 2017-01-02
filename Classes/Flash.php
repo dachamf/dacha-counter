@@ -8,29 +8,40 @@
  */
 class Flash
 {
-    public function flash($name = '', $message = '', $class = 'success fadeout-message')
-    {
-        //We can only do something if the name isn't empty
-        if (!empty($name)) {
-            //No message, create it
-            if (!empty($message) && empty($_SESSION[$name])) {
-                if (!empty($_SESSION[$name])) {
-                    unset($_SESSION[$name]);
-                }
-                if (!empty($_SESSION[$name . '_class'])) {
-                    unset($_SESSION[$name . '_class']);
-                }
 
-                $_SESSION[$name] = $message;
-                $_SESSION[$name . '_class'] = $class;
-            } //Message exists, display it
-            elseif (!empty($_SESSION[$name]) && empty($message)) {
-                $class = !empty($_SESSION[$name . '_class']) ? $_SESSION[$name . '_class'] : 'success';
-                $sName = $_SESSION[$name];
-                unset($_SESSION[$name]);
-                unset($_SESSION[$name . '_class']);
-                return '<div class=" alert-box' . $class . ' radius" id="msg-flash">' . $_SESSION[$sName] . '<a href="#" class="close">&times;</a></div>';
-            }
+    public function __construct()
+    {
+        return;
+    }
+
+    public static function exists($name)
+    {
+        return (isset($_SESSION[$name])) ? true : false;
+    }
+
+    public static function put($name, $value)
+    {
+        return $_SESSION[$name] = $value;
+    }
+
+    public static function delete($name){
+        if(self::exists($name)){
+            unset($_SESSION[$name]);
+        }
+    }
+
+    public static function get($name){
+        return $_SESSION[$name];
+    }
+    public static function flash($name, $string, $type, $class)
+    {
+
+        if (self::exists($name)){
+            $session = self::get($name);
+            self::delete($name);
+            return $session;
+        } else {
+            self::put($name, [$string, $type,  $class]);
         }
 
     }

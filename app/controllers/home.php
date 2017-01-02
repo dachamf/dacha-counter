@@ -19,12 +19,12 @@ class Home extends Controller
     public function __construct()
     {
         $this->saveSale = $this->model('SaveSel');
-        $this->flash = new Flash();
     }
 
     public function index()
     {
-        $this->view('home/index');
+        $message = Flash::flash('message', 'This is a some test message!', 'success', 'playlist_add_check');
+        $this->view('home/index', ['message' => $message]);
     }
 
     public function report($from = null, $to = null)

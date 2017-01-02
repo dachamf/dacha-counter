@@ -73,3 +73,6 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
     background-color: #536dfe;
 }
+#alertBox{
+    background-color: #00C853;
+}

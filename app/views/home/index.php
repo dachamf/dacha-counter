@@ -29,15 +29,15 @@
 <div class="container content">
     <div class="row">
         <div class="col s12">
-            <?php if (isset($_SESSION['message'])): ?>
-                <div class="card-panel teal <?php echo $_SESSION['message_class']; ?> radius" id="alertBox">
+            <?php if (isset($data['message'])): ?>
+                <div class="card-panel <?php echo $data['message'][1]; ?> radius" id="alertBox">
                     <div class="row">
-                        <div class="col s6"><span class="white-text"><?php echo $_SESSION['message'] ?></span></div>
-                        <div class="col s6"><i class="material-icons">error</i></div>
+                        <div class="col s2"></div>
+                        <div class="col s4"><span class="white-text"><?php echo $data['message'][0] ?></span></div>
+                        <div class="col s4"><i class="material-icons"><?php echo $data['message'][2]?></i></div>
+                        <div class="col s2"></div>
                     </div>
                 </div>
-                <?php unset($_SESSION['message']); ?>
-                <?php unset($_SESSION['message_class']); ?>
             <?php endif; ?>
         </div>
     </div>
