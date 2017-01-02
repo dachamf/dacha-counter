@@ -26,9 +26,20 @@
 <!-- End Header -->
 <!--Main Content-->
 <div class="container content">
-    <!--            <div class="col s6">-->
-    <!--                <input type="date" class="datepicker">-->
-    <!--            </div>-->
+    <div class="row">
+        <div class="col s2"></div>
+        <div class="col s8">
+            <?php if (isset($data['message'])): ?>
+                <div class="card-panel <?php echo $data['message'][1]; ?> radius" id="alertBox">
+                    <div class="row">
+                        <div class="col s8"><span class="white-text info"><?php echo $data['message'][0] ?> <?php echo $data['message'][3] ?></span></div>
+                        <div class="col s4"><i class="medium material-icons white-text"><?php echo $data['message'][2]?></i></div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+        <div class="col s2"></div>
+    </div>
     <form action="report" method="get">
         <div class="row">
             <div class="col s6">

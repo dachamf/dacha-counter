@@ -33,15 +33,14 @@ class Flash
     public static function get($name){
         return $_SESSION[$name];
     }
-    public static function flash($name, $string, $type, $class)
+    public static function flash($name, $string, $type, $class, $url = '')
     {
-
         if (self::exists($name)){
             $session = self::get($name);
             self::delete($name);
             return $session;
         } else {
-            self::put($name, [$string, $type,  $class]);
+            self::put($name, [$string, $type,  $class, $url]);
         }
 
     }

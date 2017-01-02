@@ -23,13 +23,12 @@ class Home extends Controller
 
     public function index()
     {
-        $message = Flash::flash('message', 'This is a some test message!', 'success', 'playlist_add_check');
-        $this->view('home/index', ['message' => $message]);
+        $this->view('home/index');
     }
 
     public function report($from = null, $to = null)
     {
-        $from = ($from == 'home')? "" : $from;
+        $from = ($from == 'home') ? "" : $from;
         $from = (isset($_GET['from'])) ? $_GET['from'] : null;
         $to = (isset($_GET['to'])) ? $_GET['to'] : null;
 
@@ -39,7 +38,7 @@ class Home extends Controller
 
         } elseif ($from != null && $to == null) {
             $sales = $this->saveSale->query('save_sels')->where('created_at', '>', $from)->get();
-            if(!$sales->count() > 0) {
+            if (!$sales->count() > 0) {
                 $this->view('home/report', ['sales' => $sales]);
             } else {
                 $this->view('home/report');
@@ -49,7 +48,7 @@ class Home extends Controller
         } else {
             $sales = $this->saveSale->query('save_sels')->where('created_at', '>', $from)->where('created_at', '<', $to)->get();
 
-            if($sales->count() > 0) {
+            if ($sales->count() > 0) {
                 $this->view('home/report', ['sales' => $sales]);
             } else {
                 $this->view('home/report');
@@ -79,12 +78,11 @@ class Home extends Controller
                 'reason' => $reason
             ]);
 
-//            $this->flash->flash('message', 'Data is saved!', 'success');
-            $this->view('home/index');
+            $message = Flash::flash('message', 'Successfully saved data', 'success', 'beenhere');
+            $this->view('home/index',['message' => $message]);
         } else {
-
-//            $this->flash->flash('message', 'There is no data to save!', 'alert');
-            $this->view('home/index');
+            $message = Flash::flash('message', 'Eroor saving data', 'error', 'warning');
+            $this->view('home/index',['message' => $message]);
         }
 
     }
@@ -110,11 +108,14 @@ class Home extends Controller
         }
         $scheet->addTable($table, new \ExcelAnt\Coordinate\Coordinate(1, 1));
         $workbook->addSheet($scheet);
-        $writer = (new WriterFactory())->createWriter(new Excel5('../ExcellFiles/' . date('Y_m_d-h-i-s') . '_export.xls'));
+        $filePath = '../ExcellFiles/' . date('Y_m_d-h-i-s') . '_export.xls';
+        $filename = date('Y_m_d-h-i-s') . '_export.xls';
+        $writer = (new WriterFactory())->createWriter(new Excel5($filePath));
         $phpExcel = $writer->convert($workbook);
         $writer->write($phpExcel);
-        //$this->flash->flash('message', 'File is exported on ', 'success');
-        Redirect::to('/home/report');
+        $message = Flash::flash('message', 'Successfully generated file ' . $filename, 'success', 'beenhere');
+        $this->view('home/report', ['message' => $message]);
+        // Redirect::to('/home/report');
     }
 
 }
